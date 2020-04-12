@@ -7,18 +7,16 @@ public class PressurePlate : MonoBehaviour
 {
     [SerializeField] private PuzzleColors color;
 
-    private PuzzleMatcher matcherInstance;
-
-    public UnityEvent<PuzzleColors, GameObject> onPressed;
-
-    private void Awake()
-    {
-        matcherInstance = PuzzleMatcher.instance;
-    }
+    public PlateEvent onPressed;
 
     private void Start()
     {
-        onPressed.AddListener(matcherInstance.AddValueToList);
+        if (onPressed == null)
+        {
+            onPressed = new PlateEvent();
+        }
+
+        onPressed.AddListener(PuzzleMatcher.instance.AddValueToList);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,3 +25,6 @@ public class PressurePlate : MonoBehaviour
         onPressed.Invoke(color, other.gameObject);
     }
 }
+
+[System.Serializable]
+public class PlateEvent : UnityEvent<PuzzleColors, GameObject> { }
