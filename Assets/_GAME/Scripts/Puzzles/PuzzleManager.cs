@@ -12,8 +12,9 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private float delayTime; //Delay between pattern generations when a player completes a pattern
 
     [Space]
-    [Header("Matched pattern bool")]
+    [Header("Pattern bools")]
     [SerializeField] private bool playerMatchPattern = false; //Boolean to determine if any player has matched the pattern
+    public bool canPressPad = false; //Bool to determine if pads are interactable
 
     [Space]
     [Header("Pattern")]
@@ -47,6 +48,9 @@ public class PuzzleManager : MonoBehaviour
     public void InitializePattern(int length)
     {
         pattern = PatternGenerator.GeneratePattern(length);
+        patternLength = length;
+        playerMatchPattern = false;
+        canPressPad = true;
     }
 
     /* Method that waits until the boolean playerMatchPattern returns true
@@ -59,6 +63,7 @@ public class PuzzleManager : MonoBehaviour
         StartCoroutine(PatternCooldown(delayTime));
 
         playerMatchPattern = false;
+        canPressPad = false;
         yield break;
     }
 
@@ -68,5 +73,11 @@ public class PuzzleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         patternEvent.Invoke();
+        yield break;
+    }
+
+    public int GetPatternLength()
+    {
+        return patternLength;
     }
 }
