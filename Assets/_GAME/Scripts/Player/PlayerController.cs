@@ -77,6 +77,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 rotationValue = Vector2.zero;
     #endregion
 
+    public Transform rotateVisual;
+    private float pastTheta = 0;
     private void OnEnable()
     {
 
@@ -140,15 +142,23 @@ public class PlayerController : MonoBehaviour
         if (controlRotations) //If control rotations from this script
         {
             //FPS Input
-            rotationInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+            // rotationInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+            rotationInput = rawMovementInput;
 
             //Calculate Values (all scaled to Time.deltaTime already)
             Vector3 rotVal = Vector3.zero;
-            rotVal = CalculateRotation(rotationInput);
+            //rotVal = CalculateRotation(rotationInput);
 
-            //Apply Values
-            rotationTargetY.localRotation = Quaternion.Euler(0, rotVal.y, 0f); //Rotation Y
-            rotationTargetX.localRotation = Quaternion.Euler(rotVal.x, 0, 0); //Rotation X
+            // float theta = -Mathf.Atan2(velocity.y, velocity.x);
+            // pastTheta = theta;
+            // //Apply Values
+            // rotationTargetY.localRotation = Quaternion.Euler(0, theta * Mathf.Rad2Deg, 0f); //Rotation Y
+            // //rotationTargetX.localRotation = Quaternion.Euler(rotVal.x, 0, 0); //Rotation X
+            if (velocity.magnitude > 0.2f)
+            {
+                Quaternion newRot = Quaternion.LookRotation(velocity);
+                rotateVisual.localRotation = new Quaternion(0, newRot.y, 0, newRot.w);
+            }
         }
     }
 

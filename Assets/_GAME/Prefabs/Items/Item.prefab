@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7205083136696931795}
   - component: {fileID: 7205083136696931792}
   - component: {fileID: 7205083136696931793}
+  - component: {fileID: 91915397590952080}
   m_Layer: 0
-  m_Name: Test Item
+  m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,3 +110,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &91915397590952080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205083136696931798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47585b2c065b854f98f5e6a1724f79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - obj: {fileID: 0}
+    animate: 1
+    origin: {x: 0, y: 0, z: 0}
+    amplitude: 0.0025
+    frequency: 1
+  useLocalPosition: 1
