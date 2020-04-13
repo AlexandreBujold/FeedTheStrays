@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     public Transform rotateVisual;
-    private float pastTheta = 0;
     private void OnEnable()
     {
 
