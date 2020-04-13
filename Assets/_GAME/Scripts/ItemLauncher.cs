@@ -23,18 +23,18 @@ public class ItemLauncher : MonoBehaviour
     private void Update()
     {
         //! Testing
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     int random = UnityEngine.Random.Range(1, 3);
-        //     if (random == 1)
-        //     {
-        //         Debug.Log(LaunchItem(leftDestination.position));
-        //     }
-        //     else
-        //     {
-        //         Debug.Log(LaunchItem(rightDestination.position));
-        //     }
-        // }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            int random = UnityEngine.Random.Range(1, 3);
+            if (random == 1)
+            {
+                Debug.Log(LaunchItem(leftDestination.position));
+            }
+            else
+            {
+                Debug.Log(LaunchItem(rightDestination.position));
+            }
+        }
     }
 
     #region Launching
@@ -65,7 +65,14 @@ public class ItemLauncher : MonoBehaviour
         Vector3 startPos = target.position;
         for (float t = 0; t <= 1; t += 1 / (travelTime / Time.deltaTime))
         {
-            target.position = Parabola(startPos, destination, startPos.y + height, t);
+            if (target != null)
+            {
+                target.position = Parabola(startPos, destination, startPos.y + height, t);
+            }
+            else
+            {
+                break;
+            }
             yield return new WaitForEndOfFrame();
         }
         yield return null;

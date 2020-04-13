@@ -8,12 +8,33 @@ public class Cat : MonoBehaviour
     public float hunger = 50;
     public float maxHunger = 100;
 
+    public GameObject canvasPrefab;
+    private CatUI m_catUI;
+
+    private void Start()
+    {
+        if (canvasPrefab != null)
+        {
+            m_catUI = Instantiate(canvasPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform).GetComponentInChildren<CatUI>();
+            if (m_catUI != null)
+            {
+                m_catUI.m_cat = this;
+                m_catUI.gameObject.transform.localScale = Vector3.one * 0.01f;
+                Canvas catCanvas = m_catUI.GetComponent<Canvas>();
+                if (catCanvas != null)
+                {
+                    catCanvas.worldCamera = Camera.main;
+                }
+            }
+        }
+    }
+
     public bool dead;
 
     public void Feed(float amount)
     {
         hunger = Mathf.Clamp(hunger - amount, 0, maxHunger);
-
+        //Debug.Log(gameObject.name + " has been fed. Current hunger: " + hunger.ToString());
         if (m_animator != null)
         {
             m_animator.SetBool("Eating", true);
@@ -31,7 +52,12 @@ public class Cat : MonoBehaviour
 
     public void IncreaseHunger()
     {
-        hunger = Mathf.Clamp(hunger + 1, 0, maxHunger);
+        IncreaseHunger(1f);
+    }
+
+    public void IncreaseHunger(float amount)
+    {
+        hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
 
         if (hunger >= maxHunger)
         {
@@ -42,7 +68,7 @@ public class Cat : MonoBehaviour
     public void CatDead()
     {
         dead = true;
-
+        gameObject.transform.localRotation = new Quaternion(gameObject.transform.localRotation.x, gameObject.transform.localRotation.y, 90, gameObject.transform.localRotation.w);
         if (m_animator != null)
         {
             m_animator.SetBool("Dead", true);

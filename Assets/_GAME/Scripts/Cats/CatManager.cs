@@ -10,6 +10,8 @@ public class CatManager : MonoBehaviour
 
     [Space]
     public List<Cat> cats;
+    public GameObject takenEffect;
+    public GameObject fedEffect;
 
     private Coroutine catHunger;
 
@@ -27,7 +29,7 @@ public class CatManager : MonoBehaviour
 
     }
 
-    public void FeedCat()
+    public Cat FeedCat()
     {
         if (cats != null)
         {
@@ -45,8 +47,10 @@ public class CatManager : MonoBehaviour
             if (chosenCat != null)
             {
                 chosenCat.Feed(hungerDecreasePerFood);
+                return chosenCat;
             }
         }
+        return null;
     }
 
     public void StartHungerDepletion()
@@ -65,10 +69,29 @@ public class CatManager : MonoBehaviour
             {
                 foreach (Cat cat in cats)
                 {
-                    cat.IncreaseHunger();
+                    cat.IncreaseHunger(hungerDepletionRatePerSecond);
                 }
             }
             yield return new WaitForSeconds(1);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item") == true)
+        {
+            if (takenEffect != null)
+            {
+                Instantiate(takenEffect, other.gameObject.transform.position, Quaternion.identity, transform);
+            }
+
+            Destroy(other.gameObject);
+            Cat cat = FeedCat();
+
+            if (fedEffect != null && cat != null)
+            {
+                Instantiate(fedEffect, cat.gameObject.transform.position, Quaternion.identity, cat.transform);
+            }
         }
     }
 }

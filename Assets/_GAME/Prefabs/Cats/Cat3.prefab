@@ -693,6 +693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027745330983085996}
   - component: {fileID: 6974188164315646678}
+  - component: {fileID: 4031372409780972213}
   m_Layer: 0
   m_Name: Cat3
   m_TagString: Untagged
@@ -735,6 +736,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4031372409780972213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041999589245900223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7501f2da5234c3e47a454f009467419f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 6974188164315646678}
+  hunger: 50
+  maxHunger: 100
+  canvasPrefab: {fileID: 5062047190965358240, guid: 1306ec9bdeeadea4ca68611c35a8ac94,
+    type: 3}
+  dead: 0
 --- !u!1 &4501496925718499785
 GameObject:
   m_ObjectHideFlags: 0
