@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GamepadInput;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum KeyboardControls { Player1, Player2 }
 
     #region Variables
     [Header("Controller Configuration")]
-    //public GamePad.Index controllerIndex;
+    public GamePad.Index controllerIndex;
+    public KeyboardControls keyboardIndex;
     public bool useKeyboard = false;
     [Space]
     [Tooltip("Player's movement will be relative to the perspective of the Camera.")]
@@ -108,11 +111,22 @@ public class PlayerController : MonoBehaviour
         //Movement
         if (useKeyboard)
         {
-            rawMovementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            switch (keyboardIndex)
+            {
+                case KeyboardControls.Player1:
+                    rawMovementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                    break;
+
+                case KeyboardControls.Player2:
+                    rawMovementInput = new Vector2(Input.GetAxis("Horizontal2"), Input.GetAxis("Vertical2"));
+                    break;
+            }
         }
-        else
+
+        Vector2 controllerInput = GamePad.GetAxis(GamePad.Axis.LeftStick, controllerIndex);
+        if (controllerInput.magnitude > 0.1f)
         {
-            //rawMovementInput = GamePad.GetAxis(GamePad.Axis.LeftStick, controllerIndex);
+            rawMovementInput = controllerInput;
         }
 
         Vector3 movementValue = Vector3.zero;
@@ -122,13 +136,13 @@ public class PlayerController : MonoBehaviour
 
         //Combine Movement Values
         bool jump = false;
-        if (useKeyboard)
+        if (useKeyboard && allowJumping)
         {
             jump = Input.GetAxis("Jump") == 0 ? false : true;
         }
-        else
+        else if (allowJumping)
         {
-            //jump = GamePad.GetButtonDown(GamePad.Button.A, controllerIndex);
+            jump = GamePad.GetButtonDown(GamePad.Button.A, controllerIndex);
         }
         movementValue = new Vector3(movementValue.x, CalculateGravityAndJumpMovement(jump), movementValue.z);
 

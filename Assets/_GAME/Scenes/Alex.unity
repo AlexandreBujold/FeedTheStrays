@@ -54321,6 +54321,11 @@ PrefabInstance:
       propertyPath: gameCamera
       value: 
       objectReference: {fileID: 1142238251}
+    - target: {fileID: 4457227362092014627, guid: 685e2ba31871cef4f8585a347ad445d9,
+        type: 3}
+      propertyPath: useKeyboard
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 685e2ba31871cef4f8585a347ad445d9, type: 3}
 --- !u!1001 &1101441630
@@ -63853,6 +63858,16 @@ PrefabInstance:
       propertyPath: gameCamera
       value: 
       objectReference: {fileID: 1142238251}
+    - target: {fileID: 670613565757956757, guid: fe801303afdde0445ba1414ce901d4f3,
+        type: 3}
+      propertyPath: keyboardIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 670613565757956757, guid: fe801303afdde0445ba1414ce901d4f3,
+        type: 3}
+      propertyPath: useKeyboard
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe801303afdde0445ba1414ce901d4f3, type: 3}
 --- !u!1 &1259455027

@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1741b098301068a4bb6c8c8c77d28550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useKeyboard: 1
+  controllerIndex: 0
+  useKeyboard: 0
   cameraRelMovement: 1
   constForwardMovement: 0
   rotTargetRelMovement: 1
