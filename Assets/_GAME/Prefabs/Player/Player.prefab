@@ -175,10 +175,10 @@ MonoBehaviour:
   overrideSpeed: {x: 0, y: 0, z: 0}
   bounceSpeed: 10
   bounceTime: 0.5
-  zAxialMaxSpeed: 2
+  zAxialMaxSpeed: 5
   zAxialAccel: 0.25
   zAxialDecel: 0.25
-  xAxialMaxSpeed: 2
+  xAxialMaxSpeed: 5
   xAxialAccel: 0.25
   xAxialDecel: 0.25
   gravity: -9.81

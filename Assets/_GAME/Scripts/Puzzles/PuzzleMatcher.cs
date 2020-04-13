@@ -52,7 +52,7 @@ public class PuzzleMatcher : MonoBehaviour
 
     public void AddValueToList(PuzzleColors color, GameObject player)
     {
-        Debug.Log("Called by " + player.name, player);
+        //Debug.Log("Called by " + player.name, player);
         if (player == player1)
         {
             player1Pattern[player1Increment] = color;
