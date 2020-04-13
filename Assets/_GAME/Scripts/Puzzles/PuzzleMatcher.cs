@@ -10,6 +10,7 @@ public class PuzzleMatcher : MonoBehaviour
 
     [Header("Puzzle Manager Instance")]
     [SerializeField] private PuzzleManager manager;
+    public ItemLauncher launcher;
 
     [Space]
     [Header("Player References")]
@@ -51,23 +52,23 @@ public class PuzzleMatcher : MonoBehaviour
 
     public void AddValueToList(PuzzleColors color, GameObject player)
     {
-        Debug.Log("Called");
-        if(player == player1)
+        Debug.Log("Called by " + player.name, player);
+        if (player == player1)
         {
             player1Pattern[player1Increment] = color;
             player1Increment++;
-            
-            if(player1Increment == patternLength)
+
+            if (player1Increment == patternLength)
             {
                 CheckPatternMatch(player1Pattern, player);
             }
         }
-        else if(player == player2)
+        else if (player == player2)
         {
             player2Pattern[player2Increment] = color;
             player2Increment++;
 
-            if(player2Increment == patternLength)
+            if (player2Increment == patternLength)
             {
                 CheckPatternMatch(player2Pattern, player);
             }
@@ -80,11 +81,17 @@ public class PuzzleMatcher : MonoBehaviour
 
     private void CheckPatternMatch(PuzzleColors[] pattern, GameObject player)
     {
-        if(player == player1)
+        if (player == player1)
         {
-            if(Enumerable.SequenceEqual(pattern, manager.pattern))
+            if (Enumerable.SequenceEqual(pattern, manager.pattern))
             {
                 Debug.Log("Both arrays equal. Give point to player 1");
+                manager.playerMatchPattern = true;
+                if (launcher != null)
+                {
+                    launcher.LaunchItemAtPlayer1();
+                }
+                ClearPlayerArrays();
                 //Do further code here
             }
             else
@@ -93,13 +100,18 @@ public class PuzzleMatcher : MonoBehaviour
                 Array.Clear(player1Pattern, 0, patternLength);
                 player1Increment = 0;
             }
-
         }
-        else if(player == player2)
+        else if (player == player2)
         {
             if (Enumerable.SequenceEqual(pattern, manager.pattern))
             {
                 Debug.Log("Both arrays equal. Give point to player 2");
+                manager.playerMatchPattern = true;
+                if (launcher != null)
+                {
+                    launcher.LaunchItemAtPlayer2();
+                }
+                ClearPlayerArrays();
                 //Do further code here
             }
             else
@@ -109,6 +121,13 @@ public class PuzzleMatcher : MonoBehaviour
                 player2Increment = 0;
             }
         }
+    }
 
+    public void ClearPlayerArrays()
+    {
+        Array.Clear(player1Pattern, 0, patternLength);
+        Array.Clear(player2Pattern, 0, patternLength);
+        player1Increment = 0;
+        player2Increment = 0;
     }
 }

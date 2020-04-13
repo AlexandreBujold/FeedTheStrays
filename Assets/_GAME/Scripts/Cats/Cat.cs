@@ -59,7 +59,7 @@ public class Cat : MonoBehaviour
     {
         hunger = Mathf.Clamp(hunger + amount, 0, maxHunger);
 
-        if (hunger >= maxHunger)
+        if (hunger >= maxHunger && dead == false)
         {
             CatDead();
         }
@@ -68,7 +68,7 @@ public class Cat : MonoBehaviour
     public void CatDead()
     {
         dead = true;
-        gameObject.transform.localRotation = new Quaternion(gameObject.transform.localRotation.x, gameObject.transform.localRotation.y, 90, gameObject.transform.localRotation.w);
+        gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, gameObject.transform.eulerAngles.y, 90);
         if (m_animator != null)
         {
             m_animator.SetBool("Dead", true);

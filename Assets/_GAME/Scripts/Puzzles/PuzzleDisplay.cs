@@ -19,6 +19,8 @@ public class PuzzleDisplay : MonoBehaviour
     [SerializeField] private Material yellow;
     [SerializeField] private Material purple;
 
+    public GameObject newPatternEffect;
+
     private void Awake()
     {
         if (instance == null)
@@ -64,11 +66,15 @@ public class PuzzleDisplay : MonoBehaviour
     private void ChangeVisuals()
     {
         PuzzleColors color;
+        if (newPatternEffect != null)
+        {
+            Instantiate(newPatternEffect, patternObjects[2].transform.position, Quaternion.identity, transform);
+        }
         for (int i = 0; i < patternLength; i++)
         {
             color = colorList[i];
 
-            switch(color)
+            switch (color)
             {
                 case PuzzleColors.RED:
                     patternObjects[i].GetComponent<Renderer>().material = red;
@@ -94,7 +100,7 @@ public class PuzzleDisplay : MonoBehaviour
                     patternObjects[i].GetComponent<Renderer>().material = red;
                     break;
             }
-            
+
         }
     }
 }

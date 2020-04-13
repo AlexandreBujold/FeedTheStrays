@@ -28,16 +28,26 @@ public class ItemLauncher : MonoBehaviour
             int random = UnityEngine.Random.Range(1, 3);
             if (random == 1)
             {
-                Debug.Log(LaunchItem(leftDestination.position));
+                Debug.Log(LaunchItemAtPlayer1());
             }
             else
             {
-                Debug.Log(LaunchItem(rightDestination.position));
+                Debug.Log(LaunchItemAtPlayer2());
             }
         }
     }
 
     #region Launching
+
+    public bool LaunchItemAtPlayer1()
+    {
+        return LaunchItem(leftDestination.position);
+    }
+
+    public bool LaunchItemAtPlayer2()
+    {
+        return LaunchItem(rightDestination.position);
+    }
 
     public bool LaunchItem(Vector3 destination)
     {

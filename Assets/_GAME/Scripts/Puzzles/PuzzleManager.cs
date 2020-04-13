@@ -13,7 +13,7 @@ public class PuzzleManager : MonoBehaviour
 
     [Space]
     [Header("Pattern bools")]
-    [SerializeField] private bool playerMatchPattern = false; //Boolean to determine if any player has matched the pattern
+    [SerializeField] public bool playerMatchPattern = false; //Boolean to determine if any player has matched the pattern
     public bool canPressPad = false; //Bool to determine if pads are interactable
 
     [Space]
@@ -29,7 +29,7 @@ public class PuzzleManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -41,7 +41,7 @@ public class PuzzleManager : MonoBehaviour
 
     private void Start()
     {
-        if(displayEvent == null)
+        if (displayEvent == null)
         {
             displayEvent = new DisplayEvent();
         }
@@ -51,7 +51,7 @@ public class PuzzleManager : MonoBehaviour
 
     private void Update() //USED FOR TESTING THE PATTERN GEN
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             patternEvent.Invoke();
             StartCoroutine(WaitForPatternMatch());
@@ -67,11 +67,12 @@ public class PuzzleManager : MonoBehaviour
         patternLength = length;
         playerMatchPattern = false;
         canPressPad = true;
+        PuzzleMatcher.instance.ClearPlayerArrays();
     }
 
     /* Method that waits until the boolean playerMatchPattern returns true
      * Will keep track of which player caused the boolean to change and will assign them a point*/
-    public IEnumerator WaitForPatternMatch() 
+    public IEnumerator WaitForPatternMatch()
     {
         yield return new WaitUntil(() => playerMatchPattern == true);
         Debug.Log("TRUE. NOW I DIE");
