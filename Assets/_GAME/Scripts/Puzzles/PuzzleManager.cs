@@ -20,7 +20,12 @@ public class PuzzleManager : MonoBehaviour
     [Header("Pattern")]
     [SerializeField] public PuzzleColors[] pattern; //The list that will contain the pattern
 
+    [Space]
+    [Header("Puzzle Visual")]
+    [SerializeField] private PuzzleDisplay displayComp;
+
     public UnityEvent patternEvent;
+    public DisplayEvent displayEvent;
 
     private void OnEnable()
     {
@@ -32,6 +37,16 @@ public class PuzzleManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        if(displayEvent == null)
+        {
+            displayEvent = new DisplayEvent();
+        }
+
+        displayEvent.AddListener(PuzzleDisplay.instance.FetchPattern);
     }
 
     private void Update() //USED FOR TESTING THE PATTERN GEN
@@ -48,6 +63,7 @@ public class PuzzleManager : MonoBehaviour
     public void InitializePattern(int length)
     {
         pattern = PatternGenerator.GeneratePattern(length);
+        displayEvent.Invoke(pattern, length);
         patternLength = length;
         playerMatchPattern = false;
         canPressPad = true;
@@ -81,3 +97,6 @@ public class PuzzleManager : MonoBehaviour
         return patternLength;
     }
 }
+
+[System.Serializable]
+public class DisplayEvent : UnityEvent<PuzzleColors[], int> { }
