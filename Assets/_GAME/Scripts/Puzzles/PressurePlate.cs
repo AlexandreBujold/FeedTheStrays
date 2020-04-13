@@ -8,6 +8,7 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] private PuzzleColors color;
 
     public PlateEvent onPressed;
+    public ScoreEvent onScoreIncrease;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class PressurePlate : MonoBehaviour
         }
 
         onPressed.AddListener(PuzzleMatcher.instance.AddValueToList);
+        onScoreIncrease.AddListener(ScoreTracker.instance.IncreaseScore);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,3 +30,5 @@ public class PressurePlate : MonoBehaviour
 
 [System.Serializable]
 public class PlateEvent : UnityEvent<PuzzleColors, GameObject> { }
+
+public class ScoreEvent : UnityEvent<GameObject> { }
