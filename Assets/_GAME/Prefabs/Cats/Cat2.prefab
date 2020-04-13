@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 1586956562585682341}
-  hunger: 50
+  hunger: 0
   maxHunger: 100
   canvasPrefab: {fileID: 5062047190965358240, guid: 1306ec9bdeeadea4ca68611c35a8ac94,
     type: 3}

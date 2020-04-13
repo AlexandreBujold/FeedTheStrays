@@ -6,7 +6,7 @@ public class CatManager : MonoBehaviour
 {
     [Header("Food Properties")]
     public float hungerDecreasePerFood = 25f;
-    public float hungerDepletionRatePerSecond = 1;
+    public float hungerIncreaseRatePerSecond = 0.5f;
 
     [Space]
     public List<Cat> cats;
@@ -69,7 +69,7 @@ public class CatManager : MonoBehaviour
             {
                 foreach (Cat cat in cats)
                 {
-                    cat.IncreaseHunger(hungerDepletionRatePerSecond);
+                    cat.IncreaseHunger(hungerIncreaseRatePerSecond);
                 }
             }
             yield return new WaitForSeconds(1);
