@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  launcher: {fileID: 0}
   player1: {fileID: 236093749}
   player2: {fileID: 1709083608}
   patternLength: 0
@@ -336,6 +337,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlateEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pressedColor: {fileID: 0}
 --- !u!65 &545326647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -366,7 +368,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 25a7b0fdfb0b44347870995c7462e0f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -474,7 +476,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 673418658}
         m_MethodName: FetchPattern
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -633,6 +635,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlateEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pressedColor: {fileID: 0}
 --- !u!65 &1320317679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -663,7 +666,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f5e82a48451a10447b0ea4a7849baee8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -743,6 +746,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlateEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pressedColor: {fileID: 0}
 --- !u!65 &1405873799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -773,7 +777,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 56f8c57a7b2f121439dea19f7afbc46a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -944,6 +948,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlateEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pressedColor: {fileID: 0}
 --- !u!65 &1699580734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -974,7 +979,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 22c1db1e13b3ff74f88b01f6f527f19c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1163,6 +1168,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: PlateEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  pressedColor: {fileID: 0}
 --- !u!65 &1847931014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1193,7 +1199,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 11c615d777b65f5409767500a2d2f996, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1291,3 +1297,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6108dc967a7b2041bd6a1ea16abed26, type: 3}
+--- !u!1001 &4767403621598042978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4767403622166513774, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_Name
+      value: ScoreManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.42527458
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6875916
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.787551
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767403622166513775, guid: 640fdee5b82b4f8418d0ae5daded3c05,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 640fdee5b82b4f8418d0ae5daded3c05, type: 3}

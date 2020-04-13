@@ -8,7 +8,6 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] private PuzzleColors color;
 
     public PlateEvent onPressed;
-    public ScoreEvent onScoreIncrease;
 
     public Material pressedColor;
     private Material original;
@@ -18,21 +17,6 @@ public class PressurePlate : MonoBehaviour
         if (onPressed == null)
         {
             onPressed = new PlateEvent();
-        }
-
-        // if (onPressed != null)
-        // {
-        //     onPressed.AddListener(PuzzleMatcher.instance.AddValueToList);
-        // }
-
-        if (onScoreIncrease == null)
-        {
-            onScoreIncrease = new ScoreEvent();
-        }
-
-        if (onScoreIncrease != null)
-        {
-            onScoreIncrease.AddListener(ScoreTracker.instance.IncreaseScore);
         }
         original = GetComponentInChildren<MeshRenderer>().material;
     }
@@ -72,5 +56,3 @@ public class PressurePlate : MonoBehaviour
 
 [System.Serializable]
 public class PlateEvent : UnityEvent<PuzzleColors, GameObject> { }
-
-public class ScoreEvent : UnityEvent<GameObject> { }

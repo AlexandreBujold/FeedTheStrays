@@ -37,6 +37,8 @@ public class PuzzleManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        StartCoroutine(PatternCooldown(5));
     }
 
     private void Start()
@@ -66,8 +68,8 @@ public class PuzzleManager : MonoBehaviour
         displayEvent.Invoke(pattern, length);
         patternLength = length;
         playerMatchPattern = false;
-        canPressPad = true;
         PuzzleMatcher.instance.ClearPlayerArrays();
+        StartCoroutine(WaitForPatternMatch());
     }
 
     /* Method that waits until the boolean playerMatchPattern returns true
@@ -76,11 +78,9 @@ public class PuzzleManager : MonoBehaviour
     {
         yield return new WaitUntil(() => playerMatchPattern == true);
         Debug.Log("TRUE. NOW I DIE");
+        playerMatchPattern = false;
 
         StartCoroutine(PatternCooldown(delayTime));
-
-        playerMatchPattern = false;
-        canPressPad = false;
         yield break;
     }
 

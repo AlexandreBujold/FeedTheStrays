@@ -20,8 +20,8 @@ public class PuzzleMatcher : MonoBehaviour
     [Space]
     [Header("Player Pattern Variables")]
     [SerializeField] private int patternLength;
-    [SerializeField] private PuzzleColors[] player1Pattern;
-    [SerializeField] private PuzzleColors[] player2Pattern;
+    [SerializeField] public PuzzleColors[] player1Pattern;
+    [SerializeField] public PuzzleColors[] player2Pattern;
     [SerializeField] private int player1Increment = 0;
     [SerializeField] private int player2Increment = 0;
 
@@ -92,7 +92,7 @@ public class PuzzleMatcher : MonoBehaviour
                     launcher.LaunchItemAtPlayer1();
                 }
                 ClearPlayerArrays();
-                //Do further code here
+                ScoreTracker.instance.IncreaseScore(player);
             }
             else
             {
@@ -112,7 +112,7 @@ public class PuzzleMatcher : MonoBehaviour
                     launcher.LaunchItemAtPlayer2();
                 }
                 ClearPlayerArrays();
-                //Do further code here
+                ScoreTracker.instance.IncreaseScore(player);
             }
             else
             {
